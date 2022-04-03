@@ -12,6 +12,7 @@ var generateBtn = document.querySelector("#generate");
   const specialCharacters = '!@$%^&*()_+{}:"<>|';
   //  password lenght 8,128
   var  passwordLenght = "";
+  
 
 
 // Write password to the #password input
@@ -21,8 +22,7 @@ function writePassword() {
 
   passwordText.value = password;
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
 
 
 //Promt the user for the password criteria 
@@ -51,22 +51,34 @@ function generatePassword(){
 
   }else{
     alert("Please select a password between 8-128 characters");
+  }
+  //CONDITIONALS 
+
+  if (isLowerCase === true){
+    passwordCharacters += lowercase;
+  }
+  if (isUpperCase === true){
+    passwordCharacters += uppercase;
+  }
+  if (isNumeric === true){
+    passwordCharacters += numbers;
+  }
+  if (hasSpecialChars === true){
+    passwordCharacters += specialCharacters;
+  }else{
+    alert("Error: try again!");
+  }
+
+  for (var i = 0; i < passwordLenght; i++){
+    userPassword += passwordCharacters[Math.floor(Math.random()*passwordCharacters.length)];
 
   }
-  
-  //if (passwordLenght){
-   // alert ("Required Value");
-
-  //}else if(passwordLenght<&&)
-
-  
-
-
   //4)Display the password to the page
-  return "Generated Password will go here!";
+  return userPassword;
 
 }
-
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 
